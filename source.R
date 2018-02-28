@@ -136,7 +136,7 @@ surr.km = makeLearner("regr.km", predict.type = "se", covtype = "matern3_2", con
 
 # after trying 5 latin hypercube based hyperparameter sets, identify next step using Expected Improvment Acquisition Function of (Bayesian Optimization)
 modelsRF = mbo(obj.fun, design = des, learner = surr.km, show.info = !0,
-               control = setMBOControlInfill(setMBOControlTermination(makeMBOControl(), iters = 30), crit = makeMBOInfillCritEI()))$opt.path$env[["path"]]
+               control = setMBOControlInfill(setMBOControlTermination(makeMBOControl(), iters = 300), crit = makeMBOInfillCritEI()))$opt.path$env[["path"]]
 
 orderMAD = order(modelsRF$y); models = modelsRF[orderMAD, ]; 
 
@@ -228,7 +228,7 @@ surr.km = makeLearner("regr.km", predict.type = "se", covtype = "matern3_2", con
 
 # after trying 10 latin hypercube based hyperparameter sets, identify next step using Expected Improvment Acquisition Function of (Bayesian Optimization)
 modelsNnet = mbo(obj.fun, design = des, learner = surr.km, show.info = !0,
-               control = setMBOControlInfill(setMBOControlTermination(makeMBOControl(), iters = 30), crit = makeMBOInfillCritEI()))$opt.path$env[["path"]]
+               control = setMBOControlInfill(setMBOControlTermination(makeMBOControl(), iters = 300), crit = makeMBOInfillCritEI()))$opt.path$env[["path"]]
 
 orderMAD = order(modelsNnet$y); models = modelsNnet[orderMAD, ]; 
 
